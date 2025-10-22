@@ -8,27 +8,51 @@ import {
   KeyboardAvoidingView,
   Platform,
   ActivityIndicator,
+  ScrollView,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'expo-router';
 import { api } from '../../utils/api';
 import { useUserStore } from '../../store/userStore';
 import { Ionicons } from '@expo/vector-icons';
 
-export default function SignupScreen() {
+export default function AuthScreen() {
   const { t } = useTranslation();
   const router = useRouter();
   const setUser = useUserStore((state) => state.setUser);
-  const [email, setEmail] = useState('');
+  const [activeTab, setActiveTab] = useState<'signin' | 'signup'>('signup');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  
+  // Sign Up fields
+  const [fullName, setFullName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [referralCode, setReferralCode] = useState('');
+  
+  // Sign In fields
+  const [signinEmail, setSigninEmail] = useState('');
+  const [signinPassword, setSigninPassword] = useState('');
+  const [rememberMe, setRememberMe] = useState(false);
+  
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSignup = async () => {
+    if (!fullName || !email || !password) {
+      setError('Please fill all required fields');
+      return;
+    }
+    
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
+      return;
+    }
+
     setLoading(true);
     setError('');
     try {
-      const result = await api.signup(email || undefined);
+      const result = await api.signup(email);
       if (result.success) {
         const userResult = await api.getUser(result.user_id);
         setUser(userResult);
@@ -44,48 +68,259 @@ export default function SignupScreen() {
     }
   };
 
+  const handleSignin = async () => {
+    if (!signinEmail || !signinPassword) {
+      setError('Please enter email and password');
+      return;
+    }
+
+    setLoading(true);
+    setError('');
+    try {
+      // For demo, just create a new account
+      const result = await api.signup(signinEmail);
+      if (result.success) {
+        const userResult = await api.getUser(result.user_id);
+        setUser(userResult);
+        router.replace('/(tabs)');
+      } else {
+        setError('Login failed');
+      }
+    } catch (err) {
+      setError('Network error');
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleConnectWallet = async () => {
+    // Direct wallet creation
+    setLoading(true);
+    try {
+      const result = await api.signup();
+      if (result.success) {
+        const userResult = await api.getUser(result.user_id);
+        setUser(userResult);
+        router.replace('/(tabs)');
+      }
+    } catch (err) {
+      setError('Network error');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}
     >
-      <LinearGradient colors={['#3B82F6', '#8B5CF6']} style={styles.gradient}>
-        <View style={styles.content}>
-          <Ionicons name="wallet" size={64} color="white" style={styles.icon} />
-          <Text style={styles.title}>{t('auth.createWallet')}</Text>
-          <Text style={styles.subtitle}>
-            Create your PezkuwiChain wallet and start your journey
-          </Text>
+      <View style={styles.container}>
+        <ScrollView contentContainerStyle={styles.scrollContent}>
+          <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
+            <Ionicons name="arrow-back" size={24} color="#9CA3AF" />
+          </TouchableOpacity>
 
-          <View style={styles.form}>
-            <Text style={styles.label}>{t('auth.email')}</Text>
-            <TextInput
-              style={styles.input}
-              placeholder={t('auth.emailPlaceholder')}
-              placeholderTextColor="rgba(255, 255, 255, 0.5)"
-              value={email}
-              onChangeText={setEmail}
-              keyboardType="email-address"
-              autoCapitalize="none"
-            />
-            <Text style={styles.helper}>Optional - For account recovery</Text>
+          <Text style={styles.logo}>PezkuwiChain</Text>
+          <Text style={styles.subtitle}>Access your governance account</Text>
 
-            {error ? <Text style={styles.error}>{error}</Text> : null}
-
+          {/* Tabs */}
+          <View style={styles.tabs}>
             <TouchableOpacity
-              style={styles.button}
-              onPress={handleSignup}
-              disabled={loading}
+              style={[styles.tab, activeTab === 'signin' && styles.tabActive]}
+              onPress={() => {
+                setActiveTab('signin');
+                setError('');
+              }}
             >
-              {loading ? (
-                <ActivityIndicator color="white" />
-              ) : (
-                <Text style={styles.buttonText}>{t('auth.signUp')}</Text>
-              )}
+              <Text style={[styles.tabText, activeTab === 'signin' && styles.tabTextActive]}>
+                Sign In
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.tab, activeTab === 'signup' && styles.tabActive]}
+              onPress={() => {
+                setActiveTab('signup');
+                setError('');
+              }}
+            >
+              <Text style={[styles.tabText, activeTab === 'signup' && styles.tabTextActive]}>
+                Sign Up
+              </Text>
             </TouchableOpacity>
           </View>
-        </View>
-      </LinearGradient>
+
+          {/* Sign Up Form */}
+          {activeTab === 'signup' && (
+            <View style={styles.form}>
+              <View style={styles.inputGroup}>
+                <Text style={styles.label}>Full Name</Text>
+                <View style={styles.inputContainer}>
+                  <Ionicons name="person-outline" size={20} color="#6B7280" style={styles.inputIcon} />
+                  <TextInput
+                    style={styles.input}
+                    placeholder="John Doe"
+                    placeholderTextColor="#6B7280"
+                    value={fullName}
+                    onChangeText={setFullName}
+                  />
+                </View>
+              </View>
+
+              <View style={styles.inputGroup}>
+                <Text style={styles.label}>Email</Text>
+                <View style={styles.inputContainer}>
+                  <Ionicons name="mail-outline" size={20} color="#6B7280" style={styles.inputIcon} />
+                  <TextInput
+                    style={styles.input}
+                    placeholder="name@example.com"
+                    placeholderTextColor="#6B7280"
+                    value={email}
+                    onChangeText={setEmail}
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                  />
+                </View>
+              </View>
+
+              <View style={styles.inputGroup}>
+                <Text style={styles.label}>Password</Text>
+                <View style={styles.inputContainer}>
+                  <Ionicons name="lock-closed-outline" size={20} color="#6B7280" style={styles.inputIcon} />
+                  <TextInput
+                    style={styles.input}
+                    placeholder="••••••••"
+                    placeholderTextColor="#6B7280"
+                    value={password}
+                    onChangeText={setPassword}
+                    secureTextEntry={!showPassword}
+                  />
+                  <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+                    <Ionicons name={showPassword ? "eye-outline" : "eye-off-outline"} size={20} color="#6B7280" />
+                  </TouchableOpacity>
+                </View>
+              </View>
+
+              <View style={styles.inputGroup}>
+                <Text style={styles.label}>Confirm Password</Text>
+                <View style={styles.inputContainer}>
+                  <Ionicons name="lock-closed-outline" size={20} color="#6B7280" style={styles.inputIcon} />
+                  <TextInput
+                    style={styles.input}
+                    placeholder="••••••••"
+                    placeholderTextColor="#6B7280"
+                    value={confirmPassword}
+                    onChangeText={setConfirmPassword}
+                    secureTextEntry={!showPassword}
+                  />
+                </View>
+              </View>
+
+              <View style={styles.inputGroup}>
+                <Text style={styles.label}>Referral Code <Text style={styles.optional}>(Optional)</Text></Text>
+                <View style={styles.inputContainer}>
+                  <Ionicons name="people-outline" size={20} color="#6B7280" style={styles.inputIcon} />
+                  <TextInput
+                    style={styles.input}
+                    placeholder="Enter referral code"
+                    placeholderTextColor="#6B7280"
+                    value={referralCode}
+                    onChangeText={setReferralCode}
+                  />
+                </View>
+                <Text style={styles.helper}>If someone referred you, enter their code here</Text>
+              </View>
+
+              {error ? <Text style={styles.error}>{error}</Text> : null}
+
+              <TouchableOpacity style={styles.primaryButton} onPress={handleSignup} disabled={loading}>
+                {loading ? <ActivityIndicator color="#1F2937" /> : <Text style={styles.primaryButtonText}>Create Account</Text>}
+              </TouchableOpacity>
+            </View>
+          )}
+
+          {/* Sign In Form */}
+          {activeTab === 'signin' && (
+            <View style={styles.form}>
+              <View style={styles.inputGroup}>
+                <Text style={styles.label}>Email</Text>
+                <View style={styles.inputContainer}>
+                  <Ionicons name="mail-outline" size={20} color="#6B7280" style={styles.inputIcon} />
+                  <TextInput
+                    style={styles.input}
+                    placeholder="name@example.com"
+                    placeholderTextColor="#6B7280"
+                    value={signinEmail}
+                    onChangeText={setSigninEmail}
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                  />
+                </View>
+              </View>
+
+              <View style={styles.inputGroup}>
+                <Text style={styles.label}>Password</Text>
+                <View style={styles.inputContainer}>
+                  <Ionicons name="lock-closed-outline" size={20} color="#6B7280" style={styles.inputIcon} />
+                  <TextInput
+                    style={styles.input}
+                    placeholder="••••••••"
+                    placeholderTextColor="#6B7280"
+                    value={signinPassword}
+                    onChangeText={setSigninPassword}
+                    secureTextEntry={!showPassword}
+                  />
+                  <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
+                    <Ionicons name={showPassword ? "eye-outline" : "eye-off-outline"} size={20} color="#6B7280" />
+                  </TouchableOpacity>
+                </View>
+              </View>
+
+              <View style={styles.rememberRow}>
+                <TouchableOpacity 
+                  style={styles.checkbox}
+                  onPress={() => setRememberMe(!rememberMe)}
+                >
+                  <View style={[styles.checkboxBox, rememberMe && styles.checkboxChecked]}>
+                    {rememberMe && <Ionicons name="checkmark" size={16} color="white" />}
+                  </View>
+                  <Text style={styles.checkboxLabel}>Remember me</Text>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <Text style={styles.forgotPassword}>Forgot password?</Text>
+                </TouchableOpacity>
+              </View>
+
+              {error ? <Text style={styles.error}>{error}</Text> : null}
+
+              <TouchableOpacity style={styles.primaryButton} onPress={handleSignin} disabled={loading}>
+                {loading ? <ActivityIndicator color="#1F2937" /> : <Text style={styles.primaryButtonText}>Sign In</Text>}
+              </TouchableOpacity>
+            </View>
+          )}
+
+          {/* Divider */}
+          <View style={styles.divider}>
+            <View style={styles.dividerLine} />
+            <Text style={styles.dividerText}>Or continue with</Text>
+            <View style={styles.dividerLine} />
+          </View>
+
+          {/* Connect Wallet */}
+          <TouchableOpacity style={styles.walletButton} onPress={handleConnectWallet} disabled={loading}>
+            <Ionicons name="wallet-outline" size={20} color="#9CA3AF" />
+            <Text style={styles.walletButtonText}>Connect Wallet</Text>
+          </TouchableOpacity>
+
+          {/* Terms */}
+          <Text style={styles.terms}>
+            By continuing, you agree to our{' '}
+            <Text style={styles.termsLink}>Terms of Service</Text> and{' '}
+            <Text style={styles.termsLink}>Privacy Policy</Text>
+          </Text>
+        </ScrollView>
+      </View>
     </KeyboardAvoidingView>
   );
 }
