@@ -49,7 +49,6 @@ export default function WelcomeScreen() {
                 ]}
                 onPress={() => handleLanguageSelect(lang.code)}
               >
-                <Text style={styles.flag}>{lang.flag}</Text>
                 <Text
                   style={[
                     styles.langName,
