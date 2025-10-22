@@ -119,7 +119,7 @@ export default function DashboardScreen() {
       } else {
         // Blockchain & other features
         if (feature.id === 'governance' || feature.id === 'proposals') {
-          router.push('/(tabs)/governance');
+          router.push('/features/governance');
         } else if (feature.id === 'perwerde') {
           router.push('/features/education');
         }
