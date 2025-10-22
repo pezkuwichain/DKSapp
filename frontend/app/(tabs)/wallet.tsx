@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Ionicons } from '@expo/vector-icons';
 import { useUserStore } from '../../store/userStore';
 import { api } from '../../utils/api';
-import QRCode from 'react-native-qrcode-svg';
+// QRCode removed for simplicity
 
 export default function WalletScreen() {
   const { t } = useTranslation();
