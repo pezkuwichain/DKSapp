@@ -41,6 +41,9 @@ export default function GovernanceScreen() {
   return (
     <View style={styles.container}>
       <LinearGradient colors={['#1F2937', '#111827']} style={styles.header}>
+        <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
+          <Ionicons name="arrow-back" size={24} color="white" />
+        </TouchableOpacity>
         <Text style={styles.headerTitle}>{t('governance.title')}</Text>
         <Text style={styles.headerSubtitle}>Welati - Digital Democracy</Text>
       </LinearGradient>
