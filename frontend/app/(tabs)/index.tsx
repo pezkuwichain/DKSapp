@@ -17,47 +17,53 @@ import { Ionicons } from '@expo/vector-icons';
 import Animated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 
 const FEATURES = [
-  // Row 1: Governance & Core
-  { id: 'governance', name: 'Yönetişim', icon: 'people', color: '#DC2626', gated: true },
-  { id: 'delegation', name: 'Delegasyon', icon: 'swap-horizontal', color: '#16A34A', gated: false },
-  { id: 'validator', name: 'Validator', icon: 'shield-checkmark', color: '#EAB308', gated: true },
-  { id: 'stake', name: 'Stake', icon: 'trending-up', color: '#DC2626', gated: false },
+  // Row 1
+  { id: 'governance', name: 'Yönetişim', icon: 'people', color: '#3B82F6', gated: true },
+  { id: 'delegation', name: 'Delegasyon', icon: 'swap-horizontal', color: '#8B5CF6', gated: false },
+  { id: 'validator', name: 'Validator', icon: 'shield-checkmark', color: '#10B981', gated: true },
   
-  // Row 2: DeFi Features
-  { id: 'liquidity', name: 'Likidite', icon: 'water', color: '#16A34A', gated: false },
-  { id: 'bridge', name: 'Köprü', icon: 'git-branch', color: '#EAB308', gated: false },
-  { id: 'proposals', name: 'Teklifler', icon: 'document-text', color: '#DC2626', gated: true },
-  { id: 'treasury', name: 'Hazine', icon: 'cash', color: '#16A34A', gated: true },
+  // Row 2
+  { id: 'stake', name: 'Stake', icon: 'trending-up', color: '#F59E0B', gated: false },
+  { id: 'liquidity', name: 'Likidite', icon: 'water', color: '#06B6D4', gated: false },
+  { id: 'bridge', name: 'Köprü', icon: 'git-branch', color: '#EC4899', gated: false },
   
-  // Row 3: Protection & Identity
-  { id: 'mev', name: 'MEV Koruma', icon: 'shield', color: '#EAB308', gated: false },
-  { id: 'identity', name: 'Kimlik', icon: 'finger-print', color: '#DC2626', gated: false },
-  { id: 'panel', name: 'Panel', icon: 'grid', color: '#DC2626', gated: true },
-  { id: 'analytics', name: 'Analitik', icon: 'stats-chart', color: '#EAB308', gated: false },
+  // Row 3
+  { id: 'proposals', name: 'Teklifler', icon: 'document-text', color: '#EF4444', gated: true },
+  { id: 'treasury', name: 'Hazine', icon: 'cash', color: '#14B8A6', gated: true },
+  { id: 'mev', name: 'MEV Koruma', icon: 'shield', color: '#6366F1', gated: false },
   
-  // Row 4: Government Services
+  // Row 4
+  { id: 'identity', name: 'Kimlik', icon: 'finger-print', color: '#F97316', gated: false },
+  { id: 'panel', name: 'Panel', icon: 'grid', color: '#A855F7', gated: true },
+  { id: 'analytics', name: 'Analitik', icon: 'stats-chart', color: '#0EA5E9', gated: false },
+  
+  // Row 5: Government
   { id: 'president', name: 'Başkanlık', icon: 'person', color: '#DC2626', gated: false, type: 'government' },
   { id: 'government', name: 'Bakanlıklar', icon: 'business', color: '#16A34A', gated: false, type: 'government' },
   { id: 'parliament', name: 'Meclis', icon: 'home', color: '#EAB308', gated: false, type: 'government' },
-  { id: 'council', name: 'Divan', icon: 'people-circle', color: '#DC2626', gated: false, type: 'government' },
   
-  // Row 5: Community
-  { id: 'foundation', name: 'Vakıf', icon: 'heart', color: '#16A34A', gated: false },
-  { id: 'projects', name: 'Projeler', icon: 'bulb', color: '#EAB308', gated: false },
-  { id: 'business', name: 'İşletme', icon: 'briefcase', color: '#DC2626', gated: false },
-  { id: 'social', name: 'Sosyal', icon: 'chatbubbles', color: '#16A34A', gated: true },
+  // Row 6
+  { id: 'council', name: 'Divan', icon: 'people-circle', color: '#7C3AED', gated: false, type: 'government' },
+  { id: 'foundation', name: 'Vakıf', icon: 'heart', color: '#EC4899', gated: false },
+  { id: 'projects', name: 'Projeler', icon: 'bulb', color: '#F59E0B', gated: false },
   
-  // Row 6: Services
-  { id: 'health', name: 'Sağlık', icon: 'fitness', color: '#EAB308', gated: true },
-  { id: 'diaspora', name: 'Diaspora', icon: 'airplane', color: '#DC2626', gated: false },
-  { id: 'kurdistan', name: 'Kurdistan', icon: 'flag', color: '#16A34A', gated: false },
-  { id: 'language', name: 'Dil', icon: 'chatbox', color: '#EAB308', gated: false },
+  // Row 7
+  { id: 'business', name: 'İşletme', icon: 'briefcase', color: '#3B82F6', gated: false },
+  { id: 'social', name: 'Sosyal', icon: 'chatbubbles', color: '#10B981', gated: true },
+  { id: 'health', name: 'Sağlık', icon: 'fitness', color: '#84CC16', gated: true },
   
-  // Row 7: Culture & Education
-  { id: 'culture', name: 'Kültür', icon: 'color-palette', color: '#DC2626', gated: false },
-  { id: 'history', name: 'Tarih', icon: 'book', color: '#16A34A', gated: false },
-  { id: 'welati', name: 'Welati', icon: 'ribbon', color: '#EAB308', gated: true },
-  { id: 'perwerde', name: 'Perwerde', icon: 'school', color: '#DC2626', gated: true },
+  // Row 8
+  { id: 'diaspora', name: 'Diaspora', icon: 'airplane', color: '#8B5CF6', gated: false },
+  { id: 'kurdistan', name: 'Kurdistan', icon: 'flag', color: '#DC2626', gated: false },
+  { id: 'language', name: 'Dil', icon: 'chatbox', color: '#06B6D4', gated: false },
+  
+  // Row 9
+  { id: 'culture', name: 'Kültür', icon: 'color-palette', color: '#EC4899', gated: false },
+  { id: 'history', name: 'Tarih', icon: 'book', color: '#F97316', gated: false },
+  { id: 'welati', name: 'Welati', icon: 'ribbon', color: '#EF4444', gated: true },
+  
+  // Row 10
+  { id: 'perwerde', name: 'Perwerde', icon: 'school', color: '#14B8A6', gated: true },
 ];
 
 export default function DashboardScreen() {
