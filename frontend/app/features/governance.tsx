@@ -114,6 +114,7 @@ export default function GovernanceScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#111827' },
   header: { padding: 24, paddingTop: 60 },
+  backButton: { marginBottom: 16 },
   headerTitle: { fontSize: 24, fontWeight: 'bold', color: 'white', marginBottom: 4 },
   headerSubtitle: { color: '#9CA3AF', fontSize: 14 },
   warningBanner: { flexDirection: 'row', alignItems: 'center', backgroundColor: '#F59E0B20', padding: 16, margin: 16, borderRadius: 12, gap: 12 },
