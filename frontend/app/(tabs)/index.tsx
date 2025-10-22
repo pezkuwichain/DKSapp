@@ -310,7 +310,7 @@ export default function DashboardScreen() {
                     end={{ x: 1, y: 1 }}
                     style={styles.featurePill}
                   >
-                    <Ionicons name={feature.icon as any} size={32} color="white" />
+                    <Ionicons name={feature.icon as any} size={24} color="white" />
                     <Text style={styles.pillText}>{t(`features.${feature.id}`)}</Text>
                     {feature.gated && !user.is_citizen && (
                       <View style={styles.pillLock}>
