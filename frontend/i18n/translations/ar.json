@@ -43,7 +43,9 @@
     "identity": "الهوية",
     "health": "الصحة",
     "social": "الاجتماعي",
-    "diaspora": "الشتات"
+    "diaspora": "الشتات",
+    "ministries": "Ministries",
+    "foundation": "Foundation"
   },
   "citizenship": {
     "title": "كن مواطناً رقمياً",

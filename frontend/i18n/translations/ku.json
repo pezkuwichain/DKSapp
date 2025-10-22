@@ -43,7 +43,9 @@
     "identity": "Nasname",
     "health": "Tendurustî",
     "social": "Civakî",
-    "diaspora": "Diaspora"
+    "diaspora": "Diaspora",
+    "ministries": "Ministries",
+    "foundation": "Foundation"
   },
   "citizenship": {
     "title": "Bibe Welatiyekî Dîjîtal",

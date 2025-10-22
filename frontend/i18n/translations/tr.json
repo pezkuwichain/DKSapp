@@ -43,7 +43,9 @@
     "identity": "Kimlik",
     "health": "Sağlık",
     "social": "Sosyal",
-    "diaspora": "Diaspora"
+    "diaspora": "Diaspora",
+    "ministries": "Ministries",
+    "foundation": "Foundation"
   },
   "citizenship": {
     "title": "Dijital Vatandaş Olun",

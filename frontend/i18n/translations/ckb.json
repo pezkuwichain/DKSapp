@@ -43,7 +43,9 @@
     "identity": "ناسنامە",
     "health": "تەندروستی",
     "social": "کۆمەڵایەتی",
-    "diaspora": "دیاسپۆرا"
+    "diaspora": "دیاسپۆرا",
+    "ministries": "Ministries",
+    "foundation": "Foundation"
   },
   "citizenship": {
     "title": "ببە بە هاوڵاتییەکی دیجیتاڵ",

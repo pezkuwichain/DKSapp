@@ -43,7 +43,9 @@
     "identity": "هویت",
     "health": "سلامت",
     "social": "اجتماعی",
-    "diaspora": "دیاسپورا"
+    "diaspora": "دیاسپورا",
+    "ministries": "Ministries",
+    "foundation": "Foundation"
   },
   "citizenship": {
     "title": "شهروند دیجیتال شوید",
