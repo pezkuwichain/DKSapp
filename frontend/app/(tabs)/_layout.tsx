@@ -36,11 +36,11 @@ export default function TabsLayout() {
         }}
       />
       <Tabs.Screen
-        name="governance"
+        name="qr-scanner"
         options={{
-          title: t('governance.title'),
+          title: 'QR',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="people" size={size} color={color} />
+            <Ionicons name="qr-code-outline" size={size} color={color} />
           ),
         }}
       />
