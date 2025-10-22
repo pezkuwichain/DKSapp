@@ -99,21 +99,24 @@ export default function DashboardScreen() {
       setSelectedFeature(feature.name);
       setShowGatingModal(true);
     } else {
-      // Navigate to feature based on type
-      if (feature.type === 'blockchain') {
-        // Blockchain features
-        if (feature.id === 'welati' || feature.id === 'proposals') {
+      // Navigate based on feature type
+      if (feature.type === 'government') {
+        if (feature.id === 'government') {
+          router.push('/features/ministries');
+        } else if (feature.id === 'president') {
+          router.push('/features/president');
+        } else if (feature.id === 'parliament') {
+          router.push('/features/parliament');
+        } else if (feature.id === 'council') {
+          router.push('/features/council');
+        }
+      } else {
+        // Blockchain & other features
+        if (feature.id === 'governance' || feature.id === 'proposals') {
           router.push('/(tabs)/governance');
         } else if (feature.id === 'perwerde') {
           router.push('/features/education');
         }
-        // Add more blockchain feature navigation here
-      } else if (feature.type === 'ministry') {
-        // Ministry/Government features
-        if (feature.id === 'ministries') {
-          router.push('/features/ministries');
-        }
-        // Other ministry features can navigate to their specific pages
       }
     }
   };
