@@ -1,0 +1,106 @@
+{
+  "welcome": {
+    "title": "Bi xêr hatî PezkuwiChain",
+    "subtitle": "Platforma te ya Welatbûna Dîjîtal",
+    "selectLanguage": "Zimanê xwe Hilbijêre",
+    "getStarted": "Destpêkirin",
+    "description": "Pêşveçûna infrastruktura dîjîtal a Kurd"
+  },
+  "auth": {
+    "signUp": "Hesabê Biafirîne",
+    "login": "Têketin",
+    "email": "Navnîşana E-nameyê",
+    "emailPlaceholder": "E-nameya xwe binivîse",
+    "createWallet": "Çanteyê Biafirîne",
+    "walletCreated": "Çante bi serkeftî hate afirandin!"
+  },
+  "dashboard": {
+    "title": "Destpêk",
+    "wallet": "Çanteya Min",
+    "trustScore": "Puana Ewlekariyê",
+    "becomeCitizen": "Bibe Welatiyekî Dîjîtal",
+    "myDigitalID": "Nasnameyê Dîjîtal",
+    "features": "Taybetmendiyan",
+    "miniApps": "Serlêdanên Biçûk"
+  },
+  "wallet": {
+    "send": "Bişîne",
+    "receive": "Bistîne",
+    "exchange": "Guherandin",
+    "balance": "Mandeya",
+    "transactions": "Danûstandin"
+  },
+  "features": {
+    "welati": "Welatî (Rêvebirin)",
+    "perwerde": "Perwerde (Perwerdehî)",
+    "validator": "Pejirandinar",
+    "stake": "Stake",
+    "liquidity": "Hêzkirina Likidiyê",
+    "bridge": "Pir",
+    "proposals": "Pêşniyar",
+    "treasury": "Xezîne",
+    "analytics": "Analîtîk",
+    "identity": "Nasname",
+    "health": "Tendurustî",
+    "social": "Civakî",
+    "diaspora": "Diaspora"
+  },
+  "citizenship": {
+    "title": "Bibe Welatiyekî Dîjîtal",
+    "subtitle": "Taybetmendiyên taybetî veke û Puana Ewlekariyê zêde bike",
+    "kycTitle": "Pejirandina Nasnameyê",
+    "fullName": "Navê Tevahî",
+    "dateOfBirth": "Dîroka Jidayikbûnê",
+    "nationality": "Neteweperweri",
+    "documentType": "Cureya Belgeyê",
+    "uploadID": "Belgeya Nasnameyê Bar bike",
+    "takeSelfie": "Wêneyê Xwe Bigire",
+    "submit": "Bişîne",
+    "processing": "Pêvajoya...",
+    "approved": "Welatîbûn pejirand!",
+    "trustScoreIncreased": "Puana te ya ewlekariyê zêde bû!"
+  },
+  "gating": {
+    "title": "Welatîbûn pêwîst e",
+    "message": "Ev taybetmendî ji bo Welatiyên Dîjîtal e. Ji bo gihîna naverokên taybetî, dengdana li ser pêşniyaran, û zêdekirina Puana Ewlekariyê, ji kerema xwe nasnameyê xwe pejirandî da ku tu bibî welatiyekî.",
+    "cancel": "Betal bike",
+    "becomeCitizen": "Bibe Welatî"
+  },
+  "trustHub": {
+    "title": "Navenda Ewlekariyê",
+    "breakdown": "Dabeşkirina Puanê",
+    "baseScore": "Puana Bingehîn",
+    "citizenBonus": "Bonusa Welatî",
+    "educationBonus": "Bonusa Perwerdehiyê",
+    "governanceBonus": "Bonusa Rêvebirinê",
+    "validatorBonus": "Bonusa Pejirandinar",
+    "totalScore": "Puana Giştî"
+  },
+  "governance": {
+    "title": "Rêvebirin",
+    "proposals": "Pêşniyarên Çalak",
+    "vote": "Deng",
+    "votingPower": "Hêza Dengdanê",
+    "voteFor": "Deng Ji Bo",
+    "voteAgainst": "Deng Dijî"
+  },
+  "education": {
+    "title": "Perwerdehî",
+    "courses": "Kursên Berdest",
+    "enroll": "Tomar bibe",
+    "myCourses": "Kursên Min",
+    "progress": "Pêşveçûn"
+  },
+  "common": {
+    "loading": "Bar dibe...",
+    "error": "Xeletî",
+    "success": "Serketî",
+    "cancel": "Betal bike",
+    "confirm": "Pejirandin",
+    "close": "Girtî"
+  },
+  "network": {
+    "mainnet": "Tora Sereke",
+    "testnet": "Tora Ceribandinê"
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "welcome": {
+    "title": "PezkuwiChain'e Hoş Geldiniz",
+    "subtitle": "Dijital Vatandaşlık Platformunuz",
+    "selectLanguage": "Dilinizi Seçin",
+    "getStarted": "Başlayın",
+    "description": "Kürt dijital altyapısının geleceğini inşa ediyoruz"
+  },
+  "auth": {
+    "signUp": "Hesap Oluştur",
+    "login": "Giriş Yap",
+    "email": "E-posta Adresi",
+    "emailPlaceholder": "E-postanızı girin",
+    "createWallet": "Cüzdan Oluştur",
+    "walletCreated": "Cüzdan Başarıyla Oluşturuldu!"
+  },
+  "dashboard": {
+    "title": "Gösterge Paneli",
+    "wallet": "Cüzdanım",
+    "trustScore": "Güven Puanı",
+    "becomeCitizen": "Dijital Vatandaş Olun",
+    "myDigitalID": "Dijital Kimliğim",
+    "features": "Özellikler",
+    "miniApps": "Mini Uygulamalar"
+  },
+  "wallet": {
+    "send": "Gönder",
+    "receive": "Al",
+    "exchange": "Değiştir",
+    "balance": "Bakiye",
+    "transactions": "İşlemler"
+  },
+  "features": {
+    "welati": "Welati (Yönetişim)",
+    "perwerde": "Perwerde (Eğitim)",
+    "validator": "Doğrulayıcı",
+    "stake": "Stake",
+    "liquidity": "Likidite",
+    "bridge": "Köprü",
+    "proposals": "Teklifler",
+    "treasury": "Hazine",
+    "analytics": "Analitik",
+    "identity": "Kimlik",
+    "health": "Sağlık",
+    "social": "Sosyal",
+    "diaspora": "Diaspora"
+  },
+  "citizenship": {
+    "title": "Dijital Vatandaş Olun",
+    "subtitle": "Özel özelliklerin kilidini açın ve Güven Puanınızı artırın",
+    "kycTitle": "Kimlik Doğrulama",
+    "fullName": "Tam Ad",
+    "dateOfBirth": "Doğum Tarihi",
+    "nationality": "Uyruk",
+    "documentType": "Belge Türü",
+    "uploadID": "Kimlik Belgesi Yükle",
+    "takeSelfie": "Selfie Çek",
+    "submit": "Gönder",
+    "processing": "İşleniyor...",
+    "approved": "Vatandaşlık Onaylandı!",
+    "trustScoreIncreased": "Güven Puanınız arttı!"
+  },
+  "gating": {
+    "title": "Vatandaşlık Gerekli",
+    "message": "Bu özellik Dijital Vatandaşlar için ayrılmıştır. Özel içeriğe erişmek, tekliflere oy vermek ve Güven Puanınızı artırmak için lütfen vatandaş olmak üzere kimliğinizi doğrulayın.",
+    "cancel": "İptal",
+    "becomeCitizen": "Vatandaş Ol"
+  },
+  "trustHub": {
+    "title": "Güven Merkezi",
+    "breakdown": "Puan Dağılımı",
+    "baseScore": "Temel Puan",
+    "citizenBonus": "Vatandaş Bonusu",
+    "educationBonus": "Eğitim Bonusu",
+    "governanceBonus": "Yönetişim Bonusu",
+    "validatorBonus": "Doğrulayıcı Bonusu",
+    "totalScore": "Toplam Puan"
+  },
+  "governance": {
+    "title": "Yönetişim",
+    "proposals": "Aktif Teklifler",
+    "vote": "Oy Ver",
+    "votingPower": "Oy Gücü",
+    "voteFor": "Lehte Oy",
+    "voteAgainst": "Aleyhte Oy"
+  },
+  "education": {
+    "title": "Eğitim",
+    "courses": "Mevcut Kurslar",
+    "enroll": "Kayıt Ol",
+    "myCourses": "Kurslarım",
+    "progress": "İlerleme"
+  },
+  "common": {
+    "loading": "Yükleniyor...",
+    "error": "Hata",
+    "success": "Başarılı",
+    "cancel": "İptal",
+    "confirm": "Onayla",
+    "close": "Kapat"
+  },
+  "network": {
+    "mainnet": "Ana Ağ",
+    "testnet": "Test Ağı"
+  }
+}

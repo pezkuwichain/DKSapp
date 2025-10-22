@@ -1,0 +1,106 @@
+{
+  "welcome": {
+    "title": "مرحباً بك في بيزكوي تشين",
+    "subtitle": "منصة المواطنة الرقمية الخاصة بك",
+    "selectLanguage": "اختر لغتك",
+    "getStarted": "ابدأ",
+    "description": "بناء مستقبل البنية التحتية الرقمية الكردية"
+  },
+  "auth": {
+    "signUp": "إنشاء حساب",
+    "login": "تسجيل الدخول",
+    "email": "عنوان البريد الإلكتروني",
+    "emailPlaceholder": "أدخل بريدك الإلكتروني",
+    "createWallet": "إنشاء محفظة",
+    "walletCreated": "تم إنشاء المحفظة بنجاح!"
+  },
+  "dashboard": {
+    "title": "لوحة القيادة",
+    "wallet": "محفظتي",
+    "trustScore": "نقاط الثقة",
+    "becomeCitizen": "كن مواطناً رقمياً",
+    "myDigitalID": "هويتي الرقمية",
+    "features": "الميزات",
+    "miniApps": "التطبيقات المصغرة"
+  },
+  "wallet": {
+    "send": "إرسال",
+    "receive": "استقبال",
+    "exchange": "تبادل",
+    "balance": "الرصيد",
+    "transactions": "المعاملات"
+  },
+  "features": {
+    "welati": "ولاتي (الحوكمة)",
+    "perwerde": "بةروةردة (التعليم)",
+    "validator": "المدقق",
+    "stake": "الحصة",
+    "liquidity": "السيولة",
+    "bridge": "الجسر",
+    "proposals": "المقترحات",
+    "treasury": "الخزينة",
+    "analytics": "التحليلات",
+    "identity": "الهوية",
+    "health": "الصحة",
+    "social": "الاجتماعي",
+    "diaspora": "الشتات"
+  },
+  "citizenship": {
+    "title": "كن مواطناً رقمياً",
+    "subtitle": "افتح الميزات الحصرية وزد نقاط الثقة الخاصة بك",
+    "kycTitle": "التحقق من الهوية",
+    "fullName": "الاسم الكامل",
+    "dateOfBirth": "تاريخ الميلاد",
+    "nationality": "الجنسية",
+    "documentType": "نوع الوثيقة",
+    "uploadID": "تحميل وثيقة الهوية",
+    "takeSelfie": "التقط صورة شخصية",
+    "submit": "إرسال",
+    "processing": "جاري المعالجة...",
+    "approved": "تمت الموافقة على المواطنة!",
+    "trustScoreIncreased": "لقد زادت نقاط الثقة الخاصة بك!"
+  },
+  "gating": {
+    "title": "المواطنة مطلوبة",
+    "message": "هذه الميزة محجوزة للمواطنين الرقميين. للوصول إلى المحتوى الحصري والتصويت على المقترحات وزيادة نقاط الثقة، يرجى التحقق من هويتك لتصبح مواطناً.",
+    "cancel": "إلغاء",
+    "becomeCitizen": "كن مواطناً"
+  },
+  "trustHub": {
+    "title": "مركز الثقة",
+    "breakdown": "تفصيل النقاط",
+    "baseScore": "النقاط الأساسية",
+    "citizenBonus": "مكافأة المواطن",
+    "educationBonus": "مكافأة التعليم",
+    "governanceBonus": "مكافأة الحوكمة",
+    "validatorBonus": "مكافأة المدقق",
+    "totalScore": "إجمالي النقاط"
+  },
+  "governance": {
+    "title": "الحوكمة",
+    "proposals": "المقترحات النشطة",
+    "vote": "تصويت",
+    "votingPower": "قوة التصويت",
+    "voteFor": "تصويت لصالح",
+    "voteAgainst": "تصويت ضد"
+  },
+  "education": {
+    "title": "التعليم",
+    "courses": "الدورات المتاحة",
+    "enroll": "التسجيل",
+    "myCourses": "دوراتي",
+    "progress": "التقدم"
+  },
+  "common": {
+    "loading": "جاري التحميل...",
+    "error": "خطأ",
+    "success": "نجاح",
+    "cancel": "إلغاء",
+    "confirm": "تأكيد",
+    "close": "إغلاق"
+  },
+  "network": {
+    "mainnet": "الشبكة الرئيسية",
+    "testnet": "شبكة الاختبار"
+  }
+}

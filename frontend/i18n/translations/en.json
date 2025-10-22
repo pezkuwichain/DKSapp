@@ -1,0 +1,106 @@
+{
+  "welcome": {
+    "title": "Welcome to PezkuwiChain",
+    "subtitle": "Your Digital Citizenship Platform",
+    "selectLanguage": "Select Your Language",
+    "getStarted": "Get Started",
+    "description": "Building the future of Kurdish digital infrastructure"
+  },
+  "auth": {
+    "signUp": "Create Account",
+    "login": "Login",
+    "email": "Email Address",
+    "emailPlaceholder": "Enter your email",
+    "createWallet": "Create Wallet",
+    "walletCreated": "Wallet Created Successfully!"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "wallet": "My Wallet",
+    "trustScore": "Trust Score",
+    "becomeCitizen": "Become a Digital Citizen",
+    "myDigitalID": "My Digital ID",
+    "features": "Features",
+    "miniApps": "Mini Applications"
+  },
+  "wallet": {
+    "send": "Send",
+    "receive": "Receive",
+    "exchange": "Exchange",
+    "balance": "Balance",
+    "transactions": "Transactions"
+  },
+  "features": {
+    "welati": "Welati (Governance)",
+    "perwerde": "Perwerde (Education)",
+    "validator": "Validator",
+    "stake": "Stake",
+    "liquidity": "Liquidity",
+    "bridge": "Bridge",
+    "proposals": "Proposals",
+    "treasury": "Treasury",
+    "analytics": "Analytics",
+    "identity": "Identity",
+    "health": "Health",
+    "social": "Social",
+    "diaspora": "Diaspora"
+  },
+  "citizenship": {
+    "title": "Become a Digital Citizen",
+    "subtitle": "Unlock exclusive features and increase your Trust Score",
+    "kycTitle": "Identity Verification",
+    "fullName": "Full Name",
+    "dateOfBirth": "Date of Birth",
+    "nationality": "Nationality",
+    "documentType": "Document Type",
+    "uploadID": "Upload ID Document",
+    "takeSelfie": "Take Selfie",
+    "submit": "Submit",
+    "processing": "Processing...",
+    "approved": "Citizenship Approved!",
+    "trustScoreIncreased": "Your Trust Score has increased!"
+  },
+  "gating": {
+    "title": "Citizenship Required",
+    "message": "This feature is reserved for Digital Citizens. To access exclusive content, vote on proposals, and increase your Trust Score, please verify your identity to become a citizen.",
+    "cancel": "Cancel",
+    "becomeCitizen": "Become a Citizen"
+  },
+  "trustHub": {
+    "title": "Trust Hub",
+    "breakdown": "Score Breakdown",
+    "baseScore": "Base Score",
+    "citizenBonus": "Citizen Bonus",
+    "educationBonus": "Education Bonus",
+    "governanceBonus": "Governance Bonus",
+    "validatorBonus": "Validator Bonus",
+    "totalScore": "Total Score"
+  },
+  "governance": {
+    "title": "Governance",
+    "proposals": "Active Proposals",
+    "vote": "Vote",
+    "votingPower": "Voting Power",
+    "voteFor": "Vote For",
+    "voteAgainst": "Vote Against"
+  },
+  "education": {
+    "title": "Education",
+    "courses": "Available Courses",
+    "enroll": "Enroll",
+    "myCourses": "My Courses",
+    "progress": "Progress"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close"
+  },
+  "network": {
+    "mainnet": "Mainnet",
+    "testnet": "Testnet"
+  }
+}

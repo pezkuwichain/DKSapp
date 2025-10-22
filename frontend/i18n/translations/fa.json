@@ -1,0 +1,106 @@
+{
+  "welcome": {
+    "title": "به پزکووی‌چین خوش آمدید",
+    "subtitle": "پلتفرم شهروندی دیجیتال شما",
+    "selectLanguage": "زبان خود را انتخاب کنید",
+    "getStarted": "شروع کنید",
+    "description": "ساخت آینده زیرساخت دیجیتال کُرد"
+  },
+  "auth": {
+    "signUp": "ایجاد حساب",
+    "login": "ورود",
+    "email": "آدرس ایمیل",
+    "emailPlaceholder": "ایمیل خود را وارد کنید",
+    "createWallet": "ایجاد کیف پول",
+    "walletCreated": "کیف پول با موفقیت ایجاد شد!"
+  },
+  "dashboard": {
+    "title": "داشبورد",
+    "wallet": "کیف پول من",
+    "trustScore": "امتیاز اعتماد",
+    "becomeCitizen": "شهروند دیجیتال شوید",
+    "myDigitalID": "شناسه دیجیتال من",
+    "features": "ویژگی‌ها",
+    "miniApps": "اپلیکیشن‌های کوچک"
+  },
+  "wallet": {
+    "send": "ارسال",
+    "receive": "دریافت",
+    "exchange": "تبادل",
+    "balance": "موجودی",
+    "transactions": "تراکنش‌ها"
+  },
+  "features": {
+    "welati": "ولاتی (حکمرانی)",
+    "perwerde": "پرورده (آموزش)",
+    "validator": "اعتبارسنج",
+    "stake": "سهام",
+    "liquidity": "نقدینگی",
+    "bridge": "پل",
+    "proposals": "پیشنهادات",
+    "treasury": "خزانه",
+    "analytics": "تحلیل‌ها",
+    "identity": "هویت",
+    "health": "سلامت",
+    "social": "اجتماعی",
+    "diaspora": "دیاسپورا"
+  },
+  "citizenship": {
+    "title": "شهروند دیجیتال شوید",
+    "subtitle": "ویژگی‌های انحصاری را باز کنید و امتیاز اعتماد خود را افزایش دهید",
+    "kycTitle": "تأیید هویت",
+    "fullName": "نام کامل",
+    "dateOfBirth": "تاریخ تولد",
+    "nationality": "ملیت",
+    "documentType": "نوع سند",
+    "uploadID": "بارگذاری سند شناسایی",
+    "takeSelfie": "سلفی بگیرید",
+    "submit": "ارسال",
+    "processing": "در حال پردازش...",
+    "approved": "شهروندی تأیید شد!",
+    "trustScoreIncreased": "امتیاز اعتماد شما افزایش یافت!"
+  },
+  "gating": {
+    "title": "شهروندی لازم است",
+    "message": "این ویژگی برای شهروندان دیجیتال رزرو شده است. برای دسترسی به محتوای انحصاری، رأی دادن به پیشنهادات و افزایش امتیاز اعتماد، لطفاً هویت خود را تأیید کنید تا شهروند شوید.",
+    "cancel": "لغو",
+    "becomeCitizen": "شهروند شوید"
+  },
+  "trustHub": {
+    "title": "مرکز اعتماد",
+    "breakdown": "تفکیک امتیاز",
+    "baseScore": "امتیاز پایه",
+    "citizenBonus": "پاداش شهروند",
+    "educationBonus": "پاداش آموزش",
+    "governanceBonus": "پاداش حکمرانی",
+    "validatorBonus": "پاداش اعتبارسنج",
+    "totalScore": "کل امتیاز"
+  },
+  "governance": {
+    "title": "حکمرانی",
+    "proposals": "پیشنهادات فعال",
+    "vote": "رأی",
+    "votingPower": "قدرت رأی‌گیری",
+    "voteFor": "رأی موافق",
+    "voteAgainst": "رأی مخالف"
+  },
+  "education": {
+    "title": "آموزش",
+    "courses": "دوره‌های موجود",
+    "enroll": "ثبت‌نام",
+    "myCourses": "دوره‌های من",
+    "progress": "پیشرفت"
+  },
+  "common": {
+    "loading": "در حال بارگذاری...",
+    "error": "خطا",
+    "success": "موفقیت",
+    "cancel": "لغو",
+    "confirm": "تأیید",
+    "close": "بستن"
+  },
+  "network": {
+    "mainnet": "شبکه اصلی",
+    "testnet": "شبکه آزمایشی"
+  }
+}
