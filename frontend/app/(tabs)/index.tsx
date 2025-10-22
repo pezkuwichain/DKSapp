@@ -264,53 +264,48 @@ export default function DashboardScreen() {
           </TouchableOpacity>
         </Animated.View>
 
+        {/* Quick Actions */}
+        <Animated.View entering={FadeInDown.delay(400)} style={styles.quickActionsContainer}>
+          <TouchableOpacity style={[styles.quickActionPill, { backgroundColor: '#DC2626' }]}>
+            <Ionicons name="arrow-up" size={20} color="white" />
+            <Text style={styles.quickActionText}>Gönder</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.quickActionPill, { backgroundColor: '#16A34A' }]}>
+            <Ionicons name="arrow-down" size={20} color="white" />
+            <Text style={styles.quickActionText}>Al</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={[styles.quickActionPill, { backgroundColor: '#EAB308' }]}>
+            <Ionicons name="swap-horizontal" size={20} color="white" />
+            <Text style={styles.quickActionText}>Takas</Text>
+          </TouchableOpacity>
+        </Animated.View>
+
         {/* Features Grid */}
-        <Animated.View entering={FadeInDown.delay(400)} style={styles.featuresSection}>
-          <Text style={styles.sectionTitle}>{t('dashboard.features')}</Text>
-          <View style={styles.featuresGrid}>
+        <Animated.View entering={FadeInDown.delay(450)} style={styles.featuresSection}>
+          <Text style={styles.sectionTitle}>Özellikler</Text>
+          <View style={styles.pillGrid}>
             {FEATURES.map((feature, index) => (
               <Animated.View
                 key={feature.id}
-                entering={FadeInDown.delay(500 + index * 50)}
+                entering={FadeInDown.delay(500 + index * 30)}
+                style={styles.pillWrapper}
               >
                 <TouchableOpacity
-                  style={styles.featureCard}
+                  style={[styles.featurePill, { backgroundColor: feature.color }]}
                   onPress={() => handleFeaturePress(feature)}
                 >
-                  <View
-                    style={[styles.featureIcon, { backgroundColor: feature.color + '20' }]}
-                  >
-                    <Ionicons name={feature.icon as any} size={28} color={feature.color} />
-                    {feature.gated && !user.is_citizen && (
-                      <View style={styles.lockBadge}>
-                        <Ionicons name="lock-closed" size={12} color="white" />
-                      </View>
-                    )}
-                  </View>
-                  <Text style={styles.featureName}>
-                    {t(`features.${feature.name}`)}
-                  </Text>
+                  <Ionicons name={feature.icon as any} size={24} color="white" />
+                  <Text style={styles.pillText}>{feature.name}</Text>
+                  {feature.gated && !user.is_citizen && (
+                    <View style={styles.pillLock}>
+                      <Ionicons name="lock-closed" size={10} color="white" />
+                    </View>
+                  )}
                 </TouchableOpacity>
               </Animated.View>
             ))}
           </View>
         </Animated.View>
-
-        {/* Quick Actions */}
-        <View style={styles.quickActions}>
-          <TouchableOpacity style={styles.actionButton}>
-            <Ionicons name="arrow-up" size={24} color="#10B981" />
-            <Text style={styles.actionText}>{t('wallet.send')}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.actionButton}>
-            <Ionicons name="arrow-down" size={24} color="#3B82F6" />
-            <Text style={styles.actionText}>{t('wallet.receive')}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.actionButton}>
-            <Ionicons name="swap-horizontal" size={24} color="#F59E0B" />
-            <Text style={styles.actionText}>{t('wallet.exchange')}</Text>
-          </TouchableOpacity>
-        </View>
       </ScrollView>
 
       {/* Gating Modal */}
