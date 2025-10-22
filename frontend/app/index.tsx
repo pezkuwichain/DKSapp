@@ -131,10 +131,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255, 255, 255, 0.3)',
     borderColor: 'white',
   },
-  flag: {
-    fontSize: 32,
-    marginBottom: 8,
-  },
   langName: {
     color: 'rgba(255, 255, 255, 0.9)',
     fontSize: 14,
