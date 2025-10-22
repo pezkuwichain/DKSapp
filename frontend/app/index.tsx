@@ -6,12 +6,12 @@ import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 
 const LANGUAGES = [
-  { code: 'en', name: 'English', flag: '🇬🇧' },
-  { code: 'ku', name: 'Kurdî (Kurmancî)', flag: '🟥🟨🟩' },
-  { code: 'ckb', name: 'کوردی (سۆرانی)', flag: '🟥🟨🟩' },
-  { code: 'tr', name: 'Türkçe', flag: '🇹🇷' },
-  { code: 'ar', name: 'العربية', flag: '🇸🇦' },
-  { code: 'fa', name: 'فارسی', flag: '🇮🇷' },
+  { code: 'en', name: 'English' },
+  { code: 'ku', name: 'Kurdî (Kurmancî)' },
+  { code: 'ckb', name: 'کوردی (سۆرانی)' },
+  { code: 'tr', name: 'Türkçe' },
+  { code: 'ar', name: 'العربية' },
+  { code: 'fa', name: 'فارسی' },
 ];
 
 export default function WelcomeScreen() {
