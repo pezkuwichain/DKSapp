@@ -1,0 +1,537 @@
+import React, { useEffect, useState } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  RefreshControl,
+  Modal,
+} from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { useTranslation } from 'react-i18next';
+import { useRouter } from 'expo-router';
+import { useUserStore } from '../../store/userStore';
+import { api } from '../../utils/api';
+import { Ionicons } from '@expo/vector-icons';
+import Animated, { FadeIn, FadeInDown } from 'react-native-reanimated';
+
+const FEATURES = [
+  { id: 'welati', name: 'welati', icon: 'people', color: '#EF4444', gated: true },
+  { id: 'perwerde', name: 'perwerde', icon: 'school', color: '#3B82F6', gated: true },
+  { id: 'validator', name: 'validator', icon: 'shield-checkmark', color: '#10B981', gated: true },
+  { id: 'stake', name: 'stake', icon: 'trending-up', color: '#F59E0B', gated: false },
+  { id: 'liquidity', name: 'liquidity', icon: 'water', color: '#06B6D4', gated: false },
+  { id: 'bridge', name: 'bridge', icon: 'git-branch', color: '#8B5CF6', gated: false },
+  { id: 'proposals', name: 'proposals', icon: 'document-text', color: '#EC4899', gated: true },
+  { id: 'treasury', name: 'treasury', icon: 'cash', color: '#14B8A6', gated: true },
+  { id: 'analytics', name: 'analytics', icon: 'stats-chart', color: '#6366F1', gated: false },
+  { id: 'identity', name: 'identity', icon: 'finger-print', color: '#F97316', gated: false },
+  { id: 'health', name: 'health', icon: 'fitness', color: '#84CC16', gated: true },
+  { id: 'social', name: 'social', icon: 'chatbubbles', color: '#22D3EE', gated: true },
+];
+
+export default function DashboardScreen() {
+  const { t } = useTranslation();
+  const router = useRouter();
+  const { user, setUser, setTrustBreakdown, networkMode } = useUserStore();
+  const [refreshing, setRefreshing] = useState(false);
+  const [showGatingModal, setShowGatingModal] = useState(false);
+  const [selectedFeature, setSelectedFeature] = useState('');
+
+  useEffect(() => {
+    if (user) {
+      loadUserData();
+    }
+  }, [user?.user_id]);
+
+  const loadUserData = async () => {
+    if (!user) return;
+    try {
+      const [userData, trustData] = await Promise.all([
+        api.getUser(user.user_id),
+        api.getTrustScore(user.user_id),
+      ]);
+      setUser(userData);
+      setTrustBreakdown(trustData);
+    } catch (error) {
+      console.error('Failed to load user data:', error);
+    }
+  };
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await loadUserData();
+    setRefreshing(false);
+  };
+
+  const handleFeaturePress = (feature: any) => {
+    if (feature.gated && !user?.is_citizen) {
+      setSelectedFeature(feature.name);
+      setShowGatingModal(true);
+    } else {
+      // Navigate to feature
+      if (feature.id === 'welati' || feature.id === 'proposals') {
+        router.push('/(tabs)/governance');
+      } else if (feature.id === 'perwerde') {
+        router.push('/features/education');
+      }
+    }
+  };
+
+  const handleBecomeCitizen = () => {
+    router.push('/citizenship/kyc');
+  };
+
+  if (!user) {
+    return (
+      <View style={styles.loadingContainer}>
+        <Text>Loading...</Text>
+      </View>
+    );
+  }
+
+  return (
+    <View style={styles.container}>
+      <ScrollView
+        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+        contentContainerStyle={styles.scrollContent}
+      >
+        {/* Header */}
+        <LinearGradient colors={['#1F2937', '#374151']} style={styles.header}>
+          <View style={styles.headerTop}>
+            <View>
+              <Text style={styles.greeting}>PezkuwiChain</Text>
+              <Text style={styles.walletAddress}>
+                {user.wallet_address.slice(0, 6)}...{user.wallet_address.slice(-4)}
+              </Text>
+            </View>
+            <View style={styles.networkBadge}>
+              <Text style={styles.networkText}>
+                {networkMode === 'mainnet' ? t('network.mainnet') : t('network.testnet')}
+              </Text>
+            </View>
+          </View>
+        </LinearGradient>
+
+        {/* Balance Card */}
+        <Animated.View entering={FadeInDown.delay(100)} style={styles.balanceCard}>
+          <LinearGradient
+            colors={['#8B5CF6', '#EC4899']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
+            style={styles.balanceGradient}
+          >
+            <View style={styles.balanceRow}>
+              <View>
+                <Text style={styles.balanceLabel}>HEZ Balance</Text>
+                <Text style={styles.balanceAmount}>{user.hez_balance.toFixed(2)}</Text>
+              </View>
+              <View style={{ alignItems: 'flex-end' }}>
+                <Text style={styles.balanceLabel}>PEZ Balance</Text>
+                <Text style={styles.balanceAmount}>{user.pez_balance.toFixed(2)}</Text>
+              </View>
+            </View>
+          </LinearGradient>
+        </Animated.View>
+
+        {/* Trust Score */}
+        <Animated.View entering={FadeInDown.delay(200)} style={styles.trustCard}>
+          <View style={styles.trustHeader}>
+            <Ionicons name="shield-checkmark" size={24} color="#F59E0B" />
+            <Text style={styles.trustLabel}>{t('dashboard.trustScore')}</Text>
+          </View>
+          <Text style={styles.trustScore}>{user.trust_score}</Text>
+          <View style={styles.progressBar}>
+            <View style={[styles.progressFill, { width: `${(user.trust_score / 1000) * 100}%` }]} />
+          </View>
+          <Text style={styles.trustSubtext}>
+            {user.is_citizen ? 'Digital Citizen' : 'Standard User'}
+          </Text>
+        </Animated.View>
+
+        {/* Become Citizen Button */}
+        {!user.is_citizen && (
+          <Animated.View entering={FadeInDown.delay(300)}>
+            <TouchableOpacity style={styles.citizenButton} onPress={handleBecomeCitizen}>
+              <LinearGradient
+                colors={['#EF4444', '#F97316']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                style={styles.citizenGradient}
+              >
+                <Ionicons name="star" size={24} color="white" />
+                <Text style={styles.citizenButtonText}>{t('dashboard.becomeCitizen')}</Text>
+                <Ionicons name="arrow-forward" size={20} color="white" />
+              </LinearGradient>
+            </TouchableOpacity>
+          </Animated.View>
+        )}
+
+        {user.is_citizen && (
+          <Animated.View entering={FadeInDown.delay(300)} style={styles.citizenBadge}>
+            <Ionicons name="checkmark-circle" size={24} color="#10B981" />
+            <Text style={styles.citizenBadgeText}>{t('dashboard.myDigitalID')}</Text>
+          </Animated.View>
+        )}
+
+        {/* Features Grid */}
+        <Animated.View entering={FadeInDown.delay(400)} style={styles.featuresSection}>
+          <Text style={styles.sectionTitle}>{t('dashboard.features')}</Text>
+          <View style={styles.featuresGrid}>
+            {FEATURES.map((feature, index) => (
+              <Animated.View
+                key={feature.id}
+                entering={FadeInDown.delay(500 + index * 50)}
+              >
+                <TouchableOpacity
+                  style={styles.featureCard}
+                  onPress={() => handleFeaturePress(feature)}
+                >
+                  <View
+                    style={[styles.featureIcon, { backgroundColor: feature.color + '20' }]}
+                  >
+                    <Ionicons name={feature.icon as any} size={28} color={feature.color} />
+                    {feature.gated && !user.is_citizen && (
+                      <View style={styles.lockBadge}>
+                        <Ionicons name="lock-closed" size={12} color="white" />
+                      </View>
+                    )}
+                  </View>
+                  <Text style={styles.featureName}>
+                    {t(`features.${feature.name}`)}
+                  </Text>
+                </TouchableOpacity>
+              </Animated.View>
+            ))}
+          </View>
+        </Animated.View>
+
+        {/* Quick Actions */}
+        <View style={styles.quickActions}>
+          <TouchableOpacity style={styles.actionButton}>
+            <Ionicons name="arrow-up" size={24} color="#10B981" />
+            <Text style={styles.actionText}>{t('wallet.send')}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.actionButton}>
+            <Ionicons name="arrow-down" size={24} color="#3B82F6" />
+            <Text style={styles.actionText}>{t('wallet.receive')}</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.actionButton}>
+            <Ionicons name="swap-horizontal" size={24} color="#F59E0B" />
+            <Text style={styles.actionText}>{t('wallet.exchange')}</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+
+      {/* Gating Modal */}
+      <Modal
+        visible={showGatingModal}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setShowGatingModal(false)}
+      >
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <Ionicons name="lock-closed" size={48} color="#EF4444" />
+            <Text style={styles.modalTitle}>{t('gating.title')}</Text>
+            <Text style={styles.modalMessage}>{t('gating.message')}</Text>
+            <View style={styles.modalButtons}>
+              <TouchableOpacity
+                style={styles.modalButtonSecondary}
+                onPress={() => setShowGatingModal(false)}
+              >
+                <Text style={styles.modalButtonTextSecondary}>{t('gating.cancel')}</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.modalButtonPrimary}
+                onPress={() => {
+                  setShowGatingModal(false);
+                  handleBecomeCitizen();
+                }}
+              >
+                <Text style={styles.modalButtonTextPrimary}>{t('gating.becomeCitizen')}</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#111827',
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#111827',
+  },
+  scrollContent: {
+    paddingBottom: 24,
+  },
+  header: {
+    padding: 24,
+    paddingTop: 60,
+    borderBottomLeftRadius: 24,
+    borderBottomRightRadius: 24,
+  },
+  headerTop: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  greeting: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'white',
+  },
+  walletAddress: {
+    fontSize: 14,
+    color: '#9CA3AF',
+    marginTop: 4,
+  },
+  networkBadge: {
+    backgroundColor: '#F59E0B',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 12,
+  },
+  networkText: {
+    color: 'white',
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  balanceCard: {
+    margin: 16,
+    borderRadius: 16,
+    overflow: 'hidden',
+    elevation: 8,
+    shadowColor: '#8B5CF6',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+  },
+  balanceGradient: {
+    padding: 24,
+  },
+  balanceRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  balanceLabel: {
+    color: 'rgba(255, 255, 255, 0.8)',
+    fontSize: 14,
+    marginBottom: 8,
+  },
+  balanceAmount: {
+    color: 'white',
+    fontSize: 28,
+    fontWeight: 'bold',
+  },
+  trustCard: {
+    backgroundColor: '#1F2937',
+    margin: 16,
+    marginTop: 0,
+    padding: 24,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: '#374151',
+  },
+  trustHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 16,
+  },
+  trustLabel: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: '600',
+  },
+  trustScore: {
+    color: 'white',
+    fontSize: 48,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  progressBar: {
+    height: 8,
+    backgroundColor: '#374151',
+    borderRadius: 4,
+    marginTop: 16,
+    overflow: 'hidden',
+  },
+  progressFill: {
+    height: '100%',
+    backgroundColor: '#F59E0B',
+    borderRadius: 4,
+  },
+  trustSubtext: {
+    color: '#9CA3AF',
+    fontSize: 14,
+    textAlign: 'center',
+    marginTop: 8,
+  },
+  citizenButton: {
+    marginHorizontal: 16,
+    marginBottom: 16,
+    borderRadius: 16,
+    overflow: 'hidden',
+    elevation: 4,
+  },
+  citizenGradient: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 18,
+    gap: 12,
+  },
+  citizenButtonText: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  citizenBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#10B98120',
+    marginHorizontal: 16,
+    marginBottom: 16,
+    padding: 16,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: '#10B981',
+    gap: 8,
+  },
+  citizenBadgeText: {
+    color: '#10B981',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  featuresSection: {
+    padding: 16,
+  },
+  sectionTitle: {
+    color: 'white',
+    fontSize: 22,
+    fontWeight: 'bold',
+    marginBottom: 16,
+  },
+  featuresGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 12,
+  },
+  featureCard: {
+    width: '31%',
+    backgroundColor: '#1F2937',
+    padding: 16,
+    borderRadius: 12,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#374151',
+  },
+  featureIcon: {
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 8,
+    position: 'relative',
+  },
+  lockBadge: {
+    position: 'absolute',
+    top: -4,
+    right: -4,
+    backgroundColor: '#EF4444',
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  featureName: {
+    color: 'white',
+    fontSize: 11,
+    textAlign: 'center',
+  },
+  quickActions: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingHorizontal: 16,
+    marginTop: 8,
+  },
+  actionButton: {
+    alignItems: 'center',
+    gap: 8,
+  },
+  actionText: {
+    color: '#9CA3AF',
+    fontSize: 12,
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 24,
+  },
+  modalContent: {
+    backgroundColor: '#1F2937',
+    borderRadius: 20,
+    padding: 24,
+    width: '100%',
+    maxWidth: 400,
+    alignItems: 'center',
+  },
+  modalTitle: {
+    color: 'white',
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginTop: 16,
+    marginBottom: 12,
+  },
+  modalMessage: {
+    color: '#9CA3AF',
+    fontSize: 16,
+    textAlign: 'center',
+    lineHeight: 24,
+    marginBottom: 24,
+  },
+  modalButtons: {
+    flexDirection: 'row',
+    gap: 12,
+    width: '100%',
+  },
+  modalButtonSecondary: {
+    flex: 1,
+    backgroundColor: '#374151',
+    padding: 16,
+    borderRadius: 12,
+    alignItems: 'center',
+  },
+  modalButtonTextSecondary: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  modalButtonPrimary: {
+    flex: 1,
+    backgroundColor: '#EF4444',
+    padding: 16,
+    borderRadius: 12,
+    alignItems: 'center',
+  },
+  modalButtonTextPrimary: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+});
