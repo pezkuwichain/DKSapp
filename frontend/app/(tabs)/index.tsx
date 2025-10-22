@@ -541,10 +541,10 @@ const styles = StyleSheet.create({
   pillGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: 10,
+    gap: 8,
   },
   pillWrapper: {
-    width: '48%',
+    width: '32%',
   },
   featurePill: {
     flexDirection: 'row',
