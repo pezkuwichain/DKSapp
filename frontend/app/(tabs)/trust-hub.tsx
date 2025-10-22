@@ -102,13 +102,7 @@ export default function TrustHubScreen() {
           <View style={{ flex: 1 }}>
             <Text style={styles.infoTitle}>How to Increase Your Score</Text>
             <Text style={styles.infoText}>
-              • Become a Digital Citizen (+400 points){'
-'}
-              • Complete Education Courses (+50 per course){'
-'}
-              • Participate in Governance (+10 per vote){'
-'}
-              • Become a Validator (variable points)
+              {`• Become a Digital Citizen (+400 points)\n• Complete Education Courses (+50 per course)\n• Participate in Governance (+10 per vote)\n• Become a Validator (variable points)`}
             </Text>
           </View>
         </View>
