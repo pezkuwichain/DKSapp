@@ -10,6 +10,7 @@ import { Proposal } from '../../types';
 
 export default function GovernanceScreen() {
   const { t } = useTranslation();
+  const router = useRouter();
   const { user } = useUserStore();
   const [proposals, setProposals] = useState<Proposal[]>([]);
   const [loading, setLoading] = useState(true);
