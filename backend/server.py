@@ -490,6 +490,65 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+@app.on_event("startup")
+async def startup_seed_data():
+    """Seed initial data if collections are empty"""
+    # Seed proposals
+    proposal_count = await db.proposals.count_documents({})
+    if proposal_count == 0:
+        proposals = [
+            {
+                "proposal_id": str(uuid.uuid4()),
+                "title": "Increase Validator Rewards",
+                "description": "Proposal to increase validator rewards by 10% to incentivize more validators to join the network",
+                "category": "treasury",
+                "votes_for": 1250,
+                "votes_against": 340,
+                "status": "active",
+                "created_at": datetime.utcnow(),
+                "ends_at": datetime.utcnow()
+            },
+            {
+                "proposal_id": str(uuid.uuid4()),
+                "title": "New Education Program",
+                "description": "Launch a new blockchain education program for Kurdistan universities",
+                "category": "governance",
+                "votes_for": 2100,
+                "votes_against": 150,
+                "status": "active",
+                "created_at": datetime.utcnow(),
+                "ends_at": datetime.utcnow()
+            }
+        ]
+        await db.proposals.insert_many(proposals)
+        logging.info("Seeded proposals")
+    
+    # Seed courses
+    course_count = await db.courses.count_documents({})
+    if course_count == 0:
+        courses = [
+            {
+                "course_id": str(uuid.uuid4()),
+                "title": "Introduction to Blockchain",
+                "description": "Learn the fundamentals of blockchain technology",
+                "difficulty": "beginner",
+                "duration_hours": 4,
+                "trust_score_reward": 50,
+                "enrolled_count": 0
+            },
+            {
+                "course_id": str(uuid.uuid4()),
+                "title": "Smart Contracts Development",
+                "description": "Master smart contract development on PezkuwiChain",
+                "difficulty": "intermediate",
+                "duration_hours": 8,
+                "trust_score_reward": 100,
+                "enrolled_count": 0
+            }
+        ]
+        await db.courses.insert_many(courses)
+        logging.info("Seeded courses")
+
 @app.on_event("shutdown")
 async def shutdown_db_client():
     client.close()
