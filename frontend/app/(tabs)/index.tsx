@@ -291,7 +291,7 @@ export default function DashboardScreen() {
 
         {/* Features Grid */}
         <Animated.View entering={FadeInDown.delay(450)} style={styles.featuresSection}>
-          <Text style={styles.sectionTitle}>Özellikler</Text>
+          <Text style={styles.sectionTitle}>{t('dashboard.features')}</Text>
           <View style={styles.pillGrid}>
             {FEATURES.map((feature, index) => (
               <Animated.View
