@@ -25,6 +25,8 @@ export default function WelcomeScreen() {
   };
 
   const handleGetStarted = () => {
+    // Save selected language before navigating
+    console.log('Selected language:', selectedLang);
     router.push('/auth/signup');
   };
 
