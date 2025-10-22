@@ -191,6 +191,56 @@ export default function DashboardScreen() {
           </Animated.View>
         )}
 
+        {/* Referral Widget */}
+        <Animated.View entering={FadeInDown.delay(350)} style={styles.referralCard}>
+          <View style={styles.referralHeader}>
+            <View style={styles.referralIconContainer}>
+              <Ionicons name="people" size={24} color="#8B5CF6" />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.referralTitle}>Invite Friends & Earn</Text>
+              <Text style={styles.referralSubtitle}>Get rewards for each referral</Text>
+            </View>
+            <View style={styles.referralBadge}>
+              <Ionicons name="gift" size={16} color="#F59E0B" />
+              <Text style={styles.referralBadgeText}>50 PEZ</Text>
+            </View>
+          </View>
+          
+          <View style={styles.referralCodeContainer}>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.referralCodeLabel}>Your Referral Code</Text>
+              <Text style={styles.referralCode}>{user.user_id.slice(0, 8).toUpperCase()}</Text>
+            </View>
+            <TouchableOpacity style={styles.copyButton}>
+              <Ionicons name="copy-outline" size={20} color="#10B981" />
+              <Text style={styles.copyButtonText}>Copy</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.referralStats}>
+            <View style={styles.referralStat}>
+              <Text style={styles.referralStatValue}>0</Text>
+              <Text style={styles.referralStatLabel}>Referrals</Text>
+            </View>
+            <View style={styles.referralDivider} />
+            <View style={styles.referralStat}>
+              <Text style={styles.referralStatValue}>0 PEZ</Text>
+              <Text style={styles.referralStatLabel}>Earned</Text>
+            </View>
+            <View style={styles.referralDivider} />
+            <View style={styles.referralStat}>
+              <Text style={styles.referralStatValue}>+10</Text>
+              <Text style={styles.referralStatLabel}>Trust Score</Text>
+            </View>
+          </View>
+
+          <TouchableOpacity style={styles.shareButton}>
+            <Ionicons name="share-social" size={18} color="white" />
+            <Text style={styles.shareButtonText}>Share Referral Link</Text>
+          </TouchableOpacity>
+        </Animated.View>
+
         {/* Features Grid */}
         <Animated.View entering={FadeInDown.delay(400)} style={styles.featuresSection}>
           <Text style={styles.sectionTitle}>{t('dashboard.features')}</Text>
