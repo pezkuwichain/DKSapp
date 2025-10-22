@@ -76,11 +76,21 @@ export default function DashboardScreen() {
       setSelectedFeature(feature.name);
       setShowGatingModal(true);
     } else {
-      // Navigate to feature
-      if (feature.id === 'welati' || feature.id === 'proposals') {
-        router.push('/(tabs)/governance');
-      } else if (feature.id === 'perwerde') {
-        router.push('/features/education');
+      // Navigate to feature based on type
+      if (feature.type === 'blockchain') {
+        // Blockchain features
+        if (feature.id === 'welati' || feature.id === 'proposals') {
+          router.push('/(tabs)/governance');
+        } else if (feature.id === 'perwerde') {
+          router.push('/features/education');
+        }
+        // Add more blockchain feature navigation here
+      } else if (feature.type === 'ministry') {
+        // Ministry/Government features
+        if (feature.id === 'ministries') {
+          router.push('/features/ministries');
+        }
+        // Other ministry features can navigate to their specific pages
       }
     }
   };
