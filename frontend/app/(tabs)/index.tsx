@@ -300,16 +300,24 @@ export default function DashboardScreen() {
                 style={styles.pillWrapper}
               >
                 <TouchableOpacity
-                  style={[styles.featurePill, { backgroundColor: feature.color }]}
+                  style={styles.featureButton}
                   onPress={() => handleFeaturePress(feature)}
+                  activeOpacity={0.8}
                 >
-                  <Ionicons name={feature.icon as any} size={24} color="white" />
-                  <Text style={styles.pillText}>{feature.name}</Text>
-                  {feature.gated && !user.is_citizen && (
-                    <View style={styles.pillLock}>
-                      <Ionicons name="lock-closed" size={10} color="white" />
-                    </View>
-                  )}
+                  <LinearGradient
+                    colors={[feature.color, feature.color + 'DD']}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 1 }}
+                    style={styles.featurePill}
+                  >
+                    <Ionicons name={feature.icon as any} size={32} color="white" />
+                    <Text style={styles.pillText}>{t(`features.${feature.id}`)}</Text>
+                    {feature.gated && !user.is_citizen && (
+                      <View style={styles.pillLock}>
+                        <Ionicons name="lock-closed" size={10} color="white" />
+                      </View>
+                    )}
+                  </LinearGradient>
                 </TouchableOpacity>
               </Animated.View>
             ))}
