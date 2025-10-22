@@ -43,7 +43,9 @@
     "identity": "Identity",
     "health": "Health",
     "social": "Social",
-    "diaspora": "Diaspora"
+    "diaspora": "Diaspora",
+    "ministries": "Ministries",
+    "foundation": "Foundation"
   },
   "citizenship": {
     "title": "Become a Digital Citizen",
