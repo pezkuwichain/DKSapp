@@ -375,6 +375,14 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
+  qrPlaceholder: {
+    alignItems: 'center',
+    padding: 40,
+  },
+  qrText: {
+    color: '#9CA3AF',
+    marginTop: 12,
+  },
   closeButton: {
     backgroundColor: '#111827',
     paddingHorizontal: 32,
