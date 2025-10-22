@@ -17,18 +17,24 @@ import { Ionicons } from '@expo/vector-icons';
 import Animated, { FadeIn, FadeInDown } from 'react-native-reanimated';
 
 const FEATURES = [
-  { id: 'welati', name: 'welati', icon: 'people', color: '#EF4444', gated: true },
-  { id: 'perwerde', name: 'perwerde', icon: 'school', color: '#3B82F6', gated: true },
-  { id: 'validator', name: 'validator', icon: 'shield-checkmark', color: '#10B981', gated: true },
-  { id: 'stake', name: 'stake', icon: 'trending-up', color: '#F59E0B', gated: false },
-  { id: 'liquidity', name: 'liquidity', icon: 'water', color: '#06B6D4', gated: false },
-  { id: 'bridge', name: 'bridge', icon: 'git-branch', color: '#8B5CF6', gated: false },
-  { id: 'proposals', name: 'proposals', icon: 'document-text', color: '#EC4899', gated: true },
-  { id: 'treasury', name: 'treasury', icon: 'cash', color: '#14B8A6', gated: true },
-  { id: 'analytics', name: 'analytics', icon: 'stats-chart', color: '#6366F1', gated: false },
-  { id: 'identity', name: 'identity', icon: 'finger-print', color: '#F97316', gated: false },
-  { id: 'health', name: 'health', icon: 'fitness', color: '#84CC16', gated: true },
-  { id: 'social', name: 'social', icon: 'chatbubbles', color: '#22D3EE', gated: true },
+  // Blockchain Features
+  { id: 'welati', name: 'welati', icon: 'people', color: '#EF4444', gated: true, type: 'blockchain' },
+  { id: 'perwerde', name: 'perwerde', icon: 'school', color: '#3B82F6', gated: true, type: 'blockchain' },
+  { id: 'validator', name: 'validator', icon: 'shield-checkmark', color: '#10B981', gated: true, type: 'blockchain' },
+  { id: 'stake', name: 'stake', icon: 'trending-up', color: '#F59E0B', gated: false, type: 'blockchain' },
+  { id: 'liquidity', name: 'liquidity', icon: 'water', color: '#06B6D4', gated: false, type: 'blockchain' },
+  { id: 'bridge', name: 'bridge', icon: 'git-branch', color: '#8B5CF6', gated: false, type: 'blockchain' },
+  { id: 'proposals', name: 'proposals', icon: 'document-text', color: '#EC4899', gated: true, type: 'blockchain' },
+  { id: 'treasury', name: 'treasury', icon: 'cash', color: '#14B8A6', gated: true, type: 'blockchain' },
+  { id: 'analytics', name: 'analytics', icon: 'stats-chart', color: '#6366F1', gated: false, type: 'blockchain' },
+  { id: 'identity', name: 'identity', icon: 'finger-print', color: '#F97316', gated: false, type: 'blockchain' },
+  
+  // Ministries & Government
+  { id: 'ministries', name: 'ministries', icon: 'business', color: '#DC2626', gated: false, type: 'ministry' },
+  { id: 'health', name: 'health', icon: 'fitness', color: '#84CC16', gated: true, type: 'ministry' },
+  { id: 'social', name: 'social', icon: 'chatbubbles', color: '#22D3EE', gated: true, type: 'ministry' },
+  { id: 'diaspora', name: 'diaspora', icon: 'globe', color: '#A855F7', gated: true, type: 'ministry' },
+  { id: 'foundation', name: 'foundation', icon: 'ribbon', color: '#EC4899', gated: false, type: 'ministry' },
 ];
 
 export default function DashboardScreen() {
