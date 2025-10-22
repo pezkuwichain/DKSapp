@@ -1,19 +1,64 @@
-diff --git a/frontend/app/(tabs)/trust-hub.tsx b/frontend/app/(tabs)/trust-hub.tsx
-index caec0be..5df6aa9 100644
---- a/frontend/app/(tabs)/trust-hub.tsx
-+++ b/frontend/app/(tabs)/trust-hub.tsx
-@@ -102,13 +102,7 @@ export default function TrustHubScreen() {
-           <View style={{ flex: 1 }}>
-             <Text style={styles.infoTitle}>How to Increase Your Score</Text>
-             <Text style={styles.infoText}>
--              • Become a Digital Citizen (+400 points){'
--'}
--              • Complete Education Courses (+50 per course){'
--'}
--              • Participate in Governance (+10 per vote){'
--'}
--              • Become a Validator (variable points)
-+              {`• Become a Digital Citizen (+400 points)\n• Complete Education Courses (+50 per course)\n• Participate in Governance (+10 per vote)\n• Become a Validator (variable points)`}
-             </Text>
-           </View>
-         </View>
+diff --git a/frontend/app/(tabs)/index.tsx b/frontend/app/(tabs)/index.tsx
+index be26d49..d51dd4a 100644
+--- a/frontend/app/(tabs)/index.tsx
++++ b/frontend/app/(tabs)/index.tsx
+@@ -99,21 +99,24 @@ export default function DashboardScreen() {
+       setSelectedFeature(feature.name);
+       setShowGatingModal(true);
+     } else {
+-      // Navigate to feature based on type
+-      if (feature.type === 'blockchain') {
+-        // Blockchain features
+-        if (feature.id === 'welati' || feature.id === 'proposals') {
++      // Navigate based on feature type
++      if (feature.type === 'government') {
++        if (feature.id === 'government') {
++          router.push('/features/ministries');
++        } else if (feature.id === 'president') {
++          router.push('/features/president');
++        } else if (feature.id === 'parliament') {
++          router.push('/features/parliament');
++        } else if (feature.id === 'council') {
++          router.push('/features/council');
++        }
++      } else {
++        // Blockchain & other features
++        if (feature.id === 'governance' || feature.id === 'proposals') {
+           router.push('/(tabs)/governance');
+         } else if (feature.id === 'perwerde') {
+           router.push('/features/education');
+         }
+-        // Add more blockchain feature navigation here
+-      } else if (feature.type === 'ministry') {
+-        // Ministry/Government features
+-        if (feature.id === 'ministries') {
+-          router.push('/features/ministries');
+-        }
+-        // Other ministry features can navigate to their specific pages
+       }
+     }
+   };
+diff --git a/model.patch b/model.patch
+index 6daf36a..e69de29 100644
+--- a/model.patch
++++ b/model.patch
+@@ -1,19 +0,0 @@
+-diff --git a/frontend/app/(tabs)/trust-hub.tsx b/frontend/app/(tabs)/trust-hub.tsx
+-index caec0be..5df6aa9 100644
+---- a/frontend/app/(tabs)/trust-hub.tsx
+-+++ b/frontend/app/(tabs)/trust-hub.tsx
+-@@ -102,13 +102,7 @@ export default function TrustHubScreen() {
+-           <View style={{ flex: 1 }}>
+-             <Text style={styles.infoTitle}>How to Increase Your Score</Text>
+-             <Text style={styles.infoText}>
+--              • Become a Digital Citizen (+400 points){'
+--'}
+--              • Complete Education Courses (+50 per course){'
+--'}
+--              • Participate in Governance (+10 per vote){'
+--'}
+--              • Become a Validator (variable points)
+-+              {`• Become a Digital Citizen (+400 points)\n• Complete Education Courses (+50 per course)\n• Participate in Governance (+10 per vote)\n• Become a Validator (variable points)`}
+-             </Text>
+-           </View>
+-         </View>
