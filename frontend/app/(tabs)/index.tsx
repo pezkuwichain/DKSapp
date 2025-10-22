@@ -277,15 +277,15 @@ export default function DashboardScreen() {
         <Animated.View entering={FadeInDown.delay(400)} style={styles.quickActionsContainer}>
           <TouchableOpacity style={[styles.quickActionPill, { backgroundColor: '#DC2626' }]}>
             <Ionicons name="arrow-up" size={20} color="white" />
-            <Text style={styles.quickActionText}>Gönder</Text>
+            <Text style={styles.quickActionText}>{t('wallet.send')}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={[styles.quickActionPill, { backgroundColor: '#16A34A' }]}>
             <Ionicons name="arrow-down" size={20} color="white" />
-            <Text style={styles.quickActionText}>Al</Text>
+            <Text style={styles.quickActionText}>{t('wallet.receive')}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={[styles.quickActionPill, { backgroundColor: '#EAB308' }]}>
             <Ionicons name="swap-horizontal" size={20} color="white" />
-            <Text style={styles.quickActionText}>Takas</Text>
+            <Text style={styles.quickActionText}>{t('wallet.exchange')}</Text>
           </TouchableOpacity>
         </Animated.View>
 
