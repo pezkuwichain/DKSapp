@@ -14,7 +14,7 @@ const MINISTRIES = [
     nameCkb: 'سەرۆک وەزیران',
     icon: 'briefcase', 
     color: '#DC2626',
-    url: 'https://basbakanlik.pezkuwichain.io'
+    url: 'https://serokweziri.pezkuwichain.io'
   },
   { 
     id: 'foreign_affairs', 
@@ -23,7 +23,7 @@ const MINISTRIES = [
     nameCkb: 'دەرەوە',
     icon: 'globe', 
     color: '#2563EB',
-    url: 'https://disisleri.pezkuwichain.io'
+    url: 'https://derve.pezkuwichain.io'
   },
   { 
     id: 'education', 
@@ -32,7 +32,7 @@ const MINISTRIES = [
     nameCkb: 'پەروەردە',
     icon: 'school', 
     color: '#7C3AED',
-    url: 'https://egitim.pezkuwichain.io'
+    url: 'https://perwerde.pezkuwichain.io'
   },
   { 
     id: 'health', 
@@ -41,7 +41,7 @@ const MINISTRIES = [
     nameCkb: 'تەندروستی',
     icon: 'medical', 
     color: '#059669',
-    url: 'https://saglik.pezkuwichain.io'
+    url: 'https://tenduristi.pezkuwichain.io'
   },
   { 
     id: 'interior', 
@@ -50,7 +50,7 @@ const MINISTRIES = [
     nameCkb: 'ناوخۆ',
     icon: 'shield', 
     color: '#0891B2',
-    url: 'https://icisleri.pezkuwichain.io'
+    url: 'https://navxwe.pezkuwichain.io'
   },
   { 
     id: 'justice', 
@@ -59,7 +59,7 @@ const MINISTRIES = [
     nameCkb: 'دادوەری',
     icon: 'scale', 
     color: '#7C2D12',
-    url: 'https://adalet.pezkuwichain.io'
+    url: 'https://dadweri.pezkuwichain.io'
   },
   { 
     id: 'finance', 
@@ -68,7 +68,7 @@ const MINISTRIES = [
     nameCkb: 'دارایی',
     icon: 'cash', 
     color: '#065F46',
-    url: 'https://maliye.pezkuwichain.io'
+    url: 'https://darayi.pezkuwichain.io'
   },
   { 
     id: 'defense', 
@@ -77,7 +77,7 @@ const MINISTRIES = [
     nameCkb: 'بەرگری',
     icon: 'shield-checkmark', 
     color: '#991B1B',
-    url: 'https://savunma.pezkuwichain.io'
+    url: 'https://bergirani.pezkuwichain.io'
   },
   { 
     id: 'agriculture', 
@@ -86,7 +86,7 @@ const MINISTRIES = [
     nameCkb: 'کشتوکاڵ',
     icon: 'leaf', 
     color: '#65A30D',
-    url: 'https://tarim.pezkuwichain.io'
+    url: 'https://candini.pezkuwichain.io'
   },
   { 
     id: 'energy', 
@@ -95,7 +95,7 @@ const MINISTRIES = [
     nameCkb: 'وزە',
     icon: 'flash', 
     color: '#CA8A04',
-    url: 'https://enerji.pezkuwichain.io'
+    url: 'https://werzi.pezkuwichain.io'
   },
   { 
     id: 'transport', 
@@ -104,7 +104,7 @@ const MINISTRIES = [
     nameCkb: 'گواستنەوە',
     icon: 'car', 
     color: '#0369A1',
-    url: 'https://ulastirma.pezkuwichain.io'
+    url: 'https://veguhestin.pezkuwichain.io'
   },
   { 
     id: 'culture', 
@@ -113,7 +113,7 @@ const MINISTRIES = [
     nameCkb: 'کولتور و گەشتیاری',
     icon: 'images', 
     color: '#DB2777',
-    url: 'https://kultur.pezkuwichain.io'
+    url: 'https://cand.pezkuwichain.io'
   },
 ];
 
