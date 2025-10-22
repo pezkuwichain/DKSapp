@@ -328,71 +328,183 @@ export default function AuthScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#0F172A',
   },
-  gradient: {
-    flex: 1,
-  },
-  content: {
-    flex: 1,
+  scrollContent: {
     padding: 24,
-    justifyContent: 'center',
+    paddingTop: 60,
   },
-  icon: {
-    alignSelf: 'center',
-    marginBottom: 24,
+  backButton: {
+    marginBottom: 32,
   },
-  title: {
+  logo: {
     fontSize: 32,
     fontWeight: 'bold',
-    color: 'white',
+    color: '#A3E635',
     textAlign: 'center',
     marginBottom: 8,
   },
   subtitle: {
     fontSize: 16,
-    color: 'rgba(255, 255, 255, 0.8)',
+    color: '#9CA3AF',
     textAlign: 'center',
-    marginBottom: 48,
+    marginBottom: 32,
+  },
+  tabs: {
+    flexDirection: 'row',
+    backgroundColor: '#1E293B',
+    borderRadius: 12,
+    padding: 4,
+    marginBottom: 32,
+  },
+  tab: {
+    flex: 1,
+    paddingVertical: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  tabActive: {
+    backgroundColor: '#10B981',
+  },
+  tabText: {
+    color: '#9CA3AF',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  tabTextActive: {
+    color: '#1F2937',
   },
   form: {
-    gap: 16,
+    gap: 20,
+  },
+  inputGroup: {
+    gap: 8,
   },
   label: {
     fontSize: 16,
     fontWeight: '600',
-    color: 'white',
+    color: '#F3F4F6',
+  },
+  optional: {
+    color: '#6B7280',
+    fontWeight: '400',
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#1E293B',
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#334155',
+    paddingHorizontal: 16,
+    paddingVertical: 4,
+  },
+  inputIcon: {
+    marginRight: 12,
   },
   input: {
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-    padding: 16,
-    borderRadius: 12,
-    color: 'white',
+    flex: 1,
+    color: '#F3F4F6',
     fontSize: 16,
-    borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.3)',
+    paddingVertical: 12,
   },
   helper: {
     fontSize: 12,
-    color: 'rgba(255, 255, 255, 0.7)',
-    marginTop: -8,
+    color: '#6B7280',
+    marginTop: 4,
   },
   error: {
-    color: '#FCA5A5',
+    color: '#EF4444',
     fontSize: 14,
     textAlign: 'center',
+    backgroundColor: '#7F1D1D20',
+    padding: 12,
+    borderRadius: 8,
   },
-  button: {
-    backgroundColor: 'rgba(0, 0, 0, 0.3)',
-    padding: 18,
+  primaryButton: {
+    backgroundColor: '#F59E0B',
+    paddingVertical: 16,
     borderRadius: 12,
     alignItems: 'center',
-    marginTop: 16,
-    borderWidth: 2,
-    borderColor: 'white',
+    marginTop: 8,
   },
-  buttonText: {
-    color: 'white',
+  primaryButtonText: {
+    color: '#1F2937',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  rememberRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  checkbox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  checkboxBox: {
+    width: 20,
+    height: 20,
+    borderRadius: 4,
+    borderWidth: 2,
+    borderColor: '#4B5563',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  checkboxChecked: {
+    backgroundColor: '#10B981',
+    borderColor: '#10B981',
+  },
+  checkboxLabel: {
+    color: '#9CA3AF',
+    fontSize: 14,
+  },
+  forgotPassword: {
+    color: '#10B981',
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  divider: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 24,
+  },
+  dividerLine: {
+    flex: 1,
+    height: 1,
+    backgroundColor: '#334155',
+  },
+  dividerText: {
+    color: '#6B7280',
+    paddingHorizontal: 16,
+    fontSize: 14,
+  },
+  walletButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#1E293B',
+    borderWidth: 1,
+    borderColor: '#334155',
+    paddingVertical: 16,
+    borderRadius: 12,
+    gap: 12,
+  },
+  walletButtonText: {
+    color: '#9CA3AF',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  terms: {
+    fontSize: 12,
+    color: '#6B7280',
+    textAlign: 'center',
+    marginTop: 24,
+    lineHeight: 18,
+  },
+  termsLink: {
+    color: '#10B981',
+    fontWeight: '600',
   },
 });
