@@ -57,9 +57,30 @@ export default function TabsLayout() {
         name="profile"
         options={{
           title: 'Profile',
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ color, size}) => (
             <Ionicons name="person" size={size} color={color} />
           ),
+        }}
+      />
+      <Tabs.Screen
+        name="../features/governance"
+        options={{
+          href: null,
+          tabBarButton: () => null,
+        }}
+      />
+      <Tabs.Screen
+        name="../features/education"
+        options={{
+          href: null,
+          tabBarButton: () => null,
+        }}
+      />
+      <Tabs.Screen
+        name="../features/ministries"
+        options={{
+          href: null,
+          tabBarButton: () => null,
         }}
       />
     </Tabs>
