@@ -1,0 +1,19 @@
+diff --git a/frontend/app/(tabs)/trust-hub.tsx b/frontend/app/(tabs)/trust-hub.tsx
+index caec0be..5df6aa9 100644
+--- a/frontend/app/(tabs)/trust-hub.tsx
++++ b/frontend/app/(tabs)/trust-hub.tsx
+@@ -102,13 +102,7 @@ export default function TrustHubScreen() {
+           <View style={{ flex: 1 }}>
+             <Text style={styles.infoTitle}>How to Increase Your Score</Text>
+             <Text style={styles.infoText}>
+-              • Become a Digital Citizen (+400 points){'
+-'}
+-              • Complete Education Courses (+50 per course){'
+-'}
+-              • Participate in Governance (+10 per vote){'
+-'}
+-              • Become a Validator (variable points)
++              {`• Become a Digital Citizen (+400 points)\n• Complete Education Courses (+50 per course)\n• Participate in Governance (+10 per vote)\n• Become a Validator (variable points)`}
+             </Text>
+           </View>
+         </View>
