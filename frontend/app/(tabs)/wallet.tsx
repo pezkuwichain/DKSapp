@@ -170,7 +170,10 @@ export default function WalletScreen() {
         <View style={styles.modalOverlay}>
           <View style={styles.qrModal}>
             <Text style={styles.qrTitle}>Scan to Send</Text>
-            <QRCode value={user.wallet_address} size={200} />
+            <View style={styles.qrPlaceholder}>
+              <Ionicons name="qr-code" size={120} color="#9CA3AF" />
+              <Text style={styles.qrText}>QR Code</Text>
+            </View>
             <TouchableOpacity style={styles.closeButton} onPress={() => setShowQR(false)}>
               <Text style={styles.closeButtonText}>Close</Text>
             </TouchableOpacity>
