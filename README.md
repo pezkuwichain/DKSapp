@@ -61,7 +61,7 @@ DKSapp (Digital Kurdistan State App) is the official mobile interface for Pezkuw
 - API: RESTful with async/await
 
 **Blockchain Integration**
-- SDK: **Polkadot SDK / Substrate**
+- SDK: **Pezkuwi SDK / Substrate**
 - Consensus: **TNPoS** (Trust-enhanced NPoS)
 - Language: **Rust**
 - Runtime: **WebAssembly** (Wasm)
